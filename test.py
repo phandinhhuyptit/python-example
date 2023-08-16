@@ -1,13 +1,11 @@
 import pandas as pd
 
-data = {
-    'Category': ['A', 'B', 'A', 'B', 'A', 'B'],
-    'Value': [10, 20, 30, 40, 50, 60]
-}
+data = pd.DataFrame({
+    'A': [True, True, False, True],
+    'B': [False, True, True, True],
+    'C': [True, False, False, True]
+})
 
-df = pd.DataFrame(data)
-
-grouped = df.groupby('Category')
-average_values = grouped['Value']
-
-print(average_values)
+# Check if all elements in each column are True
+result = data.apply(lambda column: column.all(), axis=0)
+print(result)
